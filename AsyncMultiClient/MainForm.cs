@@ -8,11 +8,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Net;
+using System.Net.Sockets;
 
 namespace AsyncMultiClient
 {
     public partial class MainForm : Form
     {
+        private Socket clientSocket;
+        
         public MainForm()
         {
             InitializeComponent();
@@ -23,8 +26,9 @@ namespace AsyncMultiClient
             try
             {
                 string str_ip = textBoxIP.Text;
-               // IPAddress.Parse(str_ip);
-                MessageBox.Show(str_ip);
+                clientSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+                var endPoint = new IPEndPoint(IPAddress.Parse(str_ip), 3333);
+                clientSocket.BeginConnect(endPoint, ConnectCallback, null);
 
                 buttonConnect.Enabled = false;
                 buttonDisconnect.Enabled = true;
@@ -32,8 +36,13 @@ namespace AsyncMultiClient
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message, Application.ProductName, MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
+        }
+
+        private void ConnectCallback(IAsyncResult ar)
+        {
+
         }
     }
 }
