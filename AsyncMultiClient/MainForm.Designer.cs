@@ -115,6 +115,7 @@
             this.textBoxIP.Name = "textBoxIP";
             this.textBoxIP.Size = new System.Drawing.Size(140, 20);
             this.textBoxIP.TabIndex = 7;
+            this.textBoxIP.Text = "10.11.100.48";
             // 
             // label1
             // 
