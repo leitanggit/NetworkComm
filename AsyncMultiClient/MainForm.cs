@@ -32,6 +32,7 @@ namespace AsyncMultiClient
                 clientSocket.BeginConnect(endPoint, ConnectCallback, null);
                 int temp=1;   // test code
                 string ip;    // test 2
+				int a=2;      // test 3
             }
             catch (Exception ex)
             {
