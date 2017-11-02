@@ -30,6 +30,8 @@ namespace AsyncMultiClient
                 clientSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
                 IPEndPoint endPoint = new IPEndPoint(IPAddress.Parse(str_ip), 3333);
                 clientSocket.BeginConnect(endPoint, ConnectCallback, null);
+                int temp=1;   // test code
+                string ip;    // test 2
             }
             catch (Exception ex)
             {
